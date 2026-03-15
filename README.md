@@ -61,6 +61,3 @@ The Core logic was refactored from app.py into logic_utils.py. Fixes included:
 
 ![Winning game screenshot](images/winning_game_screenshot.png)
 
-## 🚀 Stretch Features
-
-- [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]

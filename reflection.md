@@ -79,11 +79,16 @@ To be transparent, Claude wrote every pytest case in test_game_logic.py. I'm not
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 
+I would explain it to a friend by telling them to imagine a web app where every single time they interacted with a button, the whole website refreshed, except it's python code running over again from the top. Session state is like a sticky note the app keeps on the side so it doesn't forget things like your score or guess history each time it restarts.
+
 ---
 
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
-- What is one thing you would do differently next time you work with AI on a coding task?
-- In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+One habit I learned from this project that I want to reuse in future labs is definitely the pytests. This makes it to where I do not have to keep running and closing the application as it is way quicker, which is something I struggled with when creating a vibecoded app for my previous internship. Although I got the job done by continuously testing, I spent an extrordinarily large amount of time doing so. Additionally, I learned how to use git to document my project. I want to continue doing it to expand my professional portfolio!
+
+Something I would do differently the next time I work with AI on a coding tast is to be more specific when prompting it. I sometimes give vague instructions which lead to Claude guessing what I want, which sometimes is good, but most of the time it's bad.
+
+This project made me realize that AI generated code can be a building block towards creating production-ready applications. I am very interested in continuing to work with AI generated programs and refining them to work as intended!
