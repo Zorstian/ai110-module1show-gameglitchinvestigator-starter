@@ -5,6 +5,9 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 ## 1. What was broken when you started?
 
 - What did the game look like the first time you ran it?
+
+The game looked like a browser application with an okay UI, built on Streamlit. 
+
 - List at least two concrete bugs you noticed at the start  
   (for example: "the hints were backwards").
 
@@ -32,22 +35,43 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 11b. Adding to the previous bug, if you for example make 6 attempted guesses in normal difficulty (where you currently have 7 attempts) and switch to Easy mode, the Attempts left counter on the blue rounded rectangle goes into negative integers.
 
+12. (This one was found by Claude code) Scoring rewards wrong guesses. On even attempts, a "Too High" wrong guess gives you +5 points instead of penalizing you.
+
+13. You can enter an empty string as a guess. Whenever the user inputs an empty string as a guess the game should reject the input and respond with "Enter a guess."
+
 ---
 
 ## 2. How did you use AI as a teammate?
 
 - Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
+
+I utilized Claude code as my AI teammate! It aided me tremendously sorting through the lines of app.py that needed the #FIXME comments. 
+
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
+
+An example of an AI suggestion that was correct was whenever I asked it to find any additional bugs I might've missed. Bug #12 says 'Scoring rewards wrong guesses. On even attempts, a "Too High" wrong guess gives you +5 points instead of penalizing you.' -- This is indeed correct, and I tested it multiple times by running the app on Streamlit and verifying the score each even attempt time I submitted a wrong answer to confirm.
+
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
+
+An example of an AI suggestion that was incorrect, although my fault, was when I asked it to correct a #FIXME in the app.py file. I did not give it a precise instruction when I asked it to correct the logic of identifying duplicate guesses. Claude's fix was to stop the Streamlit rendering pipeline whenever the user inputs a duplicate number, which caused the Developer Debug panel and footer to disappear from the screen. I verified this was wrong by playing the game and noticing that the bottom half of the page was missing after submitting a duplicate guess. I then reprompted Claude with a more specific description of the bug. I explained that the debug panel and footer were disappearing, and it correctly fixed it by removing st.stop() and restructuring the logic with an if/else block instead.
 
 ---
 
 ## 3. Debugging and testing your fixes
 
 - How did you decide whether a bug was really fixed?
-- Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
+
+I decided a bug was really fixed by playing the game multiple times, checking off each bug after testing them. Additionally, I made sure to ask Claude to help me by creating pytests for each bug, ensuring we covered every single base. 
+
+- Describe at least one test you ran (manual or using pytest) and what it showed you about your code.
+
+One manual test I ran was submitting a duplicate number. I discovered that Claude's initial fix (which was caused by a vague prompt) called st.stop(), which caused the Developer Debug panel and footer to disappear entirely. Catching this visually showed me that a fix can bring new bugs if not tested end-to-end.
+
+Another manual test was switching difficulty mid-game; I watched the Developer Debug panel closely and confirmed the secret, attempts, score, and history all reset correctly when the difficulty changed.
+
 - Did AI help you design or understand any tests? How?
+
+To be transparent, Claude wrote every pytest case in test_game_logic.py. I'm not yet familiar with pytest's structure, so I asked Claude to generate the tests while explaining each one so I could follow along. I made sure to ask it directly to generate tests targetting specific bugs, like guessing a number outside of the range and what the expected outcome should look like. 
 
 ---
 
