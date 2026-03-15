@@ -25,13 +25,41 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [X] Describe the game's purpose.
+
+A number guessing game built with Streamlit where the player tries to guess a secret number within a limited number of attempts. The game gives hints after each guess and tracks your score across attempts. It was intentionally shipped with 13+ bugs to find and fix.
+
+- [X] Detail which bugs you found.
+
+13 bugs were identified, including:
+- Inverted Higher/Lower hints
+- No out-of-range validation
+- Broken New Game reset
+- Wrong difficulty ranges
+- Attempts counter starting at 1
+- Hardcoded range in the UI
+- Normal and Hard difficulty ranges swapped
+- Delayed history display
+- Difficulty change not resetting the game
+- Negative attempt counts when switching difficulty mid-game
+- Scoring rewarding wrong guesses on even attempts
+- Empty string inputs not being rejected
+
+- [X] Explain what fixes you applied.
+
+The Core logic was refactored from app.py into logic_utils.py. Fixes included:
+- Correcting the hint messages in check_guess
+- Adding range validation to parse_guess
+- Fully resetting game state on New Game and difficulty ranges
+- Initializing attempts to 0
+- Using dynamic ranges in the UI
+- Moving the debug panel after the submit block
+- Adding duplicate guess detection
+- Fixing the scoring penalty logic
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+![Winning game screenshot](images/winning_game_screenshot.png)
 
 ## 🚀 Stretch Features
 
